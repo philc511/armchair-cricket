@@ -2,7 +2,7 @@
 {
     public class Pack
     {
-        private Card[] cards = null;
+        private Card[] cards;
         private int currentCardCounter = 0;
         public static int numCardsInPack = 2 * 11 * Enum.GetNames(typeof(Suit)).Length;
 
@@ -36,12 +36,11 @@
         internal void Shuffle()
         {
             Random rnd = new Random();
-            Card tmp = null;
             for (int i = 0; i < 1000; i++)
             {
                 int first = rnd.Next(numCardsInPack);
                 int second = rnd.Next(numCardsInPack);
-                tmp = cards[first];
+                Card tmp = cards[first];
                 cards[first] = cards[second];
                 cards[second] = tmp;
             }
