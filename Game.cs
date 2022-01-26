@@ -53,33 +53,35 @@
             }
         }
 
-        public String ChoosePlayerOneCard(int i)
+        public void ChooseBowlerCard(int i)
         {
-            Card c = playerOneHand[i];
             if (isPlayerOneBatting)
             {
-                currentBattingCard = c;
+                Card c = playerTwoHand[i];
+                currentBowlingCard = c;
+                playerTwoHand[i] = pack.dealNextCard();
             }
             else
             {
+                Card c = playerOneHand[i];
                 currentBowlingCard = c;
+                playerOneHand[i] = pack.dealNextCard();
             }
-            playerOneHand[i] = pack.dealNextCard();
-            return c.ToString();
         }
-        public String ChoosePlayerTwoCard(int i)
+        public void ChooseBatterCard(int i)
         {
-            Card c = playerTwoHand[i];
             if (isPlayerOneBatting)
             {
-                currentBowlingCard = c;
+                Card c = playerOneHand[i];
+                currentBattingCard = c;
+                playerOneHand[i] = pack.dealNextCard();
             }
             else
             {
+                Card c = playerTwoHand[i];
                 currentBattingCard = c;
+                playerTwoHand[i] = pack.dealNextCard();
             }
-            playerTwoHand[i] = pack.dealNextCard();
-            return c.ToString();
         }
 
         public String GetBallOutcome()

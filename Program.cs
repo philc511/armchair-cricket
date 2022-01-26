@@ -1,17 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ArmchairCricket.Gameplay;
 
-var game = new ArmchairCricket.Gameplay.Game(); 
+var game = new Game(); 
 var battingStrategy = new BattingStrategy(game);
 var bowlingStrategy = new BowlingStrategy(game);
 game.PlayerOneBatting = false;
 
 while(true) {
-    game.ChoosePlayerOneCard(0);
+    game.ChooseBowlerCard(bowlingStrategy.ChooseCard());
 
-    int systemCardIndex = systemStrategy.ChoosePlayerTwoCard();
-
-    game.ChoosePlayerTwoCard(systemCardIndex);
+    game.ChooseBatterCard(battingStrategy.ChooseCard());
 
     Console.WriteLine(game.GetBallOutcome().ToString());
 
