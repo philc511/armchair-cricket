@@ -1,11 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ArmchairCricket.Gameplay;
 
-Console.WriteLine("Hello, World!");
-
-
 var game = new ArmchairCricket.Gameplay.Game(); 
-var systemStrategy = new Strategy(game);
+var battingStrategy = new BattingStrategy(game);
+var bowlingStrategy = new BowlingStrategy(game);
 game.PlayerOneBatting = false;
 
 while(true) {
