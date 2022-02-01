@@ -1,17 +1,17 @@
 // See https://aka.ms/new-console-template for more information
 using ArmchairCricket.Gameplay;
 
-internal class BowlingStrategy
+public class BowlingStrategy
 {
-    private Game game;
+    private GameState game;
 
-    public BowlingStrategy(Game game)
+    public BowlingStrategy(GameState game)
     {
         this.game = game;
     }
 
-    internal int ChooseCard()
+    public int ChooseCard()
     {
-        return new Random().Next(6);    
+        return new Random().Next(6);
     }
 }

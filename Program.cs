@@ -1,23 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ArmchairCricket.Gameplay;
 
-var game = new Game(); 
+var game = new GameState(); 
 var battingStrategy = new BattingStrategy(game);
 var bowlingStrategy = new BowlingStrategy(game);
-game.PlayerOneBatting = false;
+var rulesEngine = new RulesEngine();
+var innings = new Innings();
 
-while(true) {
-    game.ChooseBowlerCard(bowlingStrategy.ChooseCard());
-
-    game.ChooseBatterCard(battingStrategy.ChooseCard());
-
-    Console.WriteLine(game.GetBallOutcome().ToString());
-
-    Console.WriteLine(game.GetLatestScore());
-    if (game.IsEndOfInnings())
-    {
-        Console.WriteLine("Game over");
-        break;
-    }
-
-}
+Console.WriteLine(innings.Play(game, bowlingStrategy, battingStrategy, rulesEngine));
