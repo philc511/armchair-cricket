@@ -12,6 +12,19 @@ public class BattingStrategy
 
     public int ChooseCard(Card bowlCard)
     {
-        return new Random().Next(6);
+        int mostRuns = -1;
+        int index = -1;
+        // look for most runs
+        for (int i = 0; i < 6; i++) {
+            var outcome = new RulesEngine().GetOutcome(bowlCard, game.BatterHand[i]);
+            if (!outcome.isWicket()) {
+                var runs = outcome.NumRuns();
+                if (runs > mostRuns) {
+                    mostRuns = runs;
+                    index = i;
+                }
+            }
+        }
+        return index;
     }
 }
