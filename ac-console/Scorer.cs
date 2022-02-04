@@ -2,8 +2,8 @@
 {
     public class Scorer
     {
-        private int[] runs = null;
-        private int[] wickets = null;
+        private int[] runs;
+        private int[] wickets;
         private MatchState matchState = MatchState.FirstInnings;
         public Scorer()
         {
@@ -81,7 +81,7 @@
         }
         public string GetLatestScore()
         {
-            String s = null;
+            String s;
             switch (matchState)
             {
                 case MatchState.FirstInnings:
@@ -105,6 +105,9 @@
                         s = "Match tied";
                     }
                     break;
+                default:
+                    s = "UNKNOWN";
+                    break;
             }
             return s;
         }
@@ -123,7 +126,7 @@
         }
         private string getInningsScoreString(int i)
         {
-            string s = null;
+            string s;
             if (wickets[i] < 10)
             {
                 s = runs[i] + "-" + wickets[i];
