@@ -25,6 +25,8 @@ public class BattingStrategy
                 }
             }
         }
+
+        // TODO wicket falling - need to discard the lowest card
         return index;
     }
 }
